@@ -1,9 +1,9 @@
 package com.study.yufei.design.pattern.factory;
 
-import com.study.yufei.design.pattern.factory.factory.AbstractPizza;
-import com.study.yufei.design.pattern.factory.factory.ChicagoPizzaStore;
-import com.study.yufei.design.pattern.factory.factory.NYPizzaStore;
-import com.study.yufei.design.pattern.factory.factory.PizzaStore;
+import com.study.yufei.design.pattern.factory.method.AbstractPizza;
+import com.study.yufei.design.pattern.factory.method.ChicagoPizzaStore;
+import com.study.yufei.design.pattern.factory.method.NYPizzaStore;
+import com.study.yufei.design.pattern.factory.method.PizzaStore;
 
 /**
  * @author yufei.wang

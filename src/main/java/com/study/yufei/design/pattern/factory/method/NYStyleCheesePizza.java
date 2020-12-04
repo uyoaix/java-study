@@ -1,4 +1,4 @@
-package com.study.yufei.design.pattern.factory.factory;
+package com.study.yufei.design.pattern.factory.method;
 
 /**
  * @author yufei.wang

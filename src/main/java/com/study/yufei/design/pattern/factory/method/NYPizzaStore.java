@@ -1,23 +1,22 @@
-package com.study.yufei.design.pattern.factory.factory;
+package com.study.yufei.design.pattern.factory.method;
 
 /**
- * 芝加哥披萨店
+ * 纽约披萨店
  *
  * @author yufei.wang
  * @date 2020/12/04 10:45
  */
-public class ChicagoPizzaStore extends PizzaStore {
+public class NYPizzaStore extends PizzaStore {
 
     @Override
     public AbstractPizza createPizza(String type) {
         AbstractPizza pizza = null;
 
         if ("cheese".equals(type)) {
-            pizza = new ChicagoStyleCheesePizza();
+            pizza = new NYStyleCheesePizza();
         } else if ("clam".equals(type)) {
-            pizza = new ChicagoStyleCheesePizza();
+            pizza = new NYStyleClamPizza();
         }
-
         return pizza;
     }
 }

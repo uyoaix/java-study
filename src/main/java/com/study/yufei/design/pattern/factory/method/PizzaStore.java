@@ -1,8 +1,8 @@
-package com.study.yufei.design.pattern.factory.factory;
+package com.study.yufei.design.pattern.factory.method;
 
 /**
- * 工厂模式：
- * 把披萨店定义为抽象类，创建pizza的方法为抽象方法，
+ * 工厂方法模式：通过让子类决定该创建的对象是什么，来到达将对象创建的过程封装的目的
+ * 把披萨店定义为抽象类，创建pizza的方法为抽象工厂方法，
  * 每个地区的披萨店继承自这里，创建披萨由子类决定
  *
  * @author yufei.wang
