@@ -11,21 +11,30 @@ public interface Pizza {
     /**
      * 准备
      */
-    void prepare();
+    default void prepare(){
+        System.out.println("prepare");
+    }
 
     /**
      * 烘焙
      */
-    void bake();
+    default void bake(){
+        System.out.println("bake");
+    }
+
 
     /**
      * 切片
      */
-    void cut();
+    default void cut(){
+        System.out.println("cut");
+    }
 
     /**
      * 装盒
      */
-    void box();
+    default void box(){
+        System.out.println("box");
+    }
 
 }
