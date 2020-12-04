@@ -6,11 +6,11 @@ import com.study.yufei.design.pattern.factory.Pizza;
  * @author yufei.wang
  * @date 2020/12/04 09:59
  */
-public class PizzaStore {
+public class SimplePizzaStore {
 
     private SimplePizzaFactory simplePizzaFactory;
 
-    public PizzaStore(SimplePizzaFactory simplePizzaFactory){
+    public SimplePizzaStore(SimplePizzaFactory simplePizzaFactory){
         this.simplePizzaFactory = simplePizzaFactory;
     }
 
