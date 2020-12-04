@@ -1,5 +1,8 @@
 package com.study.yufei.design.pattern.factory.simple;
 
+import com.study.yufei.design.pattern.factory.CheesePizza;
+import com.study.yufei.design.pattern.factory.GreekPizza;
+import com.study.yufei.design.pattern.factory.PepperoniPizza;
 import com.study.yufei.design.pattern.factory.Pizza;
 
 /**
@@ -8,9 +11,19 @@ import com.study.yufei.design.pattern.factory.Pizza;
  */
 public class PizzaStore {
 
-    public Pizza orderPizza(){
+    public Pizza orderPizza(String type){
 
-        Pizza pizza = new Pizza();
+        Pizza pizza = null;
+
+        if("cheese".equals(type)){
+            pizza = new CheesePizza();
+        } else if("greek".equals(type)){
+            pizza = new GreekPizza();
+        } else if("pepperoni".equals(type)){
+            pizza = new PepperoniPizza();
+        }
+
+        assert pizza != null;
 
         pizza.prepare();
         pizza.bake();

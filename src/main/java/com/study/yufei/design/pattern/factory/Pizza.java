@@ -1,25 +1,31 @@
 package com.study.yufei.design.pattern.factory;
 
 /**
+ * 披萨类
+ *
  * @author yufei.wang
  * @date 2020/12/04 10:00
  */
-public class Pizza {
+public interface Pizza {
 
-    public void prepare(){
-        System.out.println("prepare");
-    }
+    /**
+     * 准备
+     */
+    void prepare();
 
-    public void bake(){
-        System.out.println("bake");
-    }
+    /**
+     * 烘焙
+     */
+    void bake();
 
-    public void cut(){
-        System.out.println("cut");
-    }
+    /**
+     * 切片
+     */
+    void cut();
 
-    public void box(){
-        System.out.println("box");
-    }
+    /**
+     * 装盒
+     */
+    void box();
 
 }
