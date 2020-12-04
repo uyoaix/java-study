@@ -13,7 +13,7 @@ import com.study.yufei.design.pattern.factory.Pizza;
  */
 public class SimplePizzaFactory {
 
-    public static Pizza createPizza(String type) {
+    public Pizza createPizza(String type) {
         Pizza pizza = null;
         if("cheese".equals(type)){
             pizza = new CheesePizza();

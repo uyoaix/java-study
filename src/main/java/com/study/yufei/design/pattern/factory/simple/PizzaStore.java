@@ -1,8 +1,5 @@
 package com.study.yufei.design.pattern.factory.simple;
 
-import com.study.yufei.design.pattern.factory.CheesePizza;
-import com.study.yufei.design.pattern.factory.GreekPizza;
-import com.study.yufei.design.pattern.factory.PepperoniPizza;
 import com.study.yufei.design.pattern.factory.Pizza;
 
 /**
@@ -11,9 +8,15 @@ import com.study.yufei.design.pattern.factory.Pizza;
  */
 public class PizzaStore {
 
+    private SimplePizzaFactory simplePizzaFactory;
+
+    public PizzaStore(SimplePizzaFactory simplePizzaFactory){
+        this.simplePizzaFactory = simplePizzaFactory;
+    }
+
     public Pizza orderPizza(String type){
 
-        Pizza pizza = SimplePizzaFactory.createPizza("cheese");
+        Pizza pizza = simplePizzaFactory.createPizza("cheese");
         assert pizza != null;
 
         pizza.prepare();
