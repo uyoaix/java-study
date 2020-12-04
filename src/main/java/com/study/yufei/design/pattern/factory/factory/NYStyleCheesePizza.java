@@ -6,5 +6,12 @@ package com.study.yufei.design.pattern.factory.factory;
  */
 public class NYStyleCheesePizza extends AbstractPizza {
 
+    public NYStyleCheesePizza(){
+        name = "New York Sauce and Cheese style Pizza";
+        dough = "Thin Crust Dough";
+        sauce = "Marinara Sauce";
+
+        toppings.add("Grated Reggiano Cheese");
+    }
 
 }

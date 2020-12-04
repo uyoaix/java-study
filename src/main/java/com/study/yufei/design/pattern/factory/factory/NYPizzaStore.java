@@ -1,12 +1,12 @@
 package com.study.yufei.design.pattern.factory.factory;
 
 /**
- * 纽约风味披萨店
+ * 纽约披萨店
  *
  * @author yufei.wang
  * @date 2020/12/04 10:45
  */
-public class NYStylePizzaStore extends PizzaStore {
+public class NYPizzaStore extends PizzaStore {
 
     @Override
     public AbstractPizza createPizza(String type) {
