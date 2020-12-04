@@ -1,7 +1,5 @@
 package com.study.yufei.design.pattern.factory.factory;
 
-import com.study.yufei.design.pattern.factory.Pizza;
-
 /**
  * 纽约风味披萨店
  *
@@ -11,8 +9,8 @@ import com.study.yufei.design.pattern.factory.Pizza;
 public class NYStylePizzaStore extends PizzaStore {
 
     @Override
-    Pizza createPizza(String type) {
-        Pizza pizza = null;
+    public AbstractPizza createPizza(String type) {
+        AbstractPizza pizza = null;
 
         if ("cheese".equals(type)) {
             pizza = new NYStyleCheesePizza();

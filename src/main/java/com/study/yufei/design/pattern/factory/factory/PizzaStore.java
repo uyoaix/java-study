@@ -1,7 +1,5 @@
 package com.study.yufei.design.pattern.factory.factory;
 
-import com.study.yufei.design.pattern.factory.Pizza;
-
 /**
  * 工厂模式：
  * 把披萨店定义为抽象类，创建pizza的方法为抽象方法，
@@ -19,7 +17,7 @@ public abstract class PizzaStore {
      */
     public final void orderPizza(String type) {
 
-        Pizza pizza = createPizza(type);
+        AbstractPizza pizza = createPizza(type);
 
         pizza.prepare();
         pizza.bake();
@@ -27,5 +25,5 @@ public abstract class PizzaStore {
         pizza.box();
     }
 
-    protected abstract Pizza createPizza(String type);
+    public abstract AbstractPizza createPizza(String type);
 }
