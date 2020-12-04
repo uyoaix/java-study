@@ -1,8 +1,5 @@
 package com.study.yufei.design.pattern.factory.simple;
 
-import com.study.yufei.design.pattern.factory.CheesePizza;
-import com.study.yufei.design.pattern.factory.GreekPizza;
-import com.study.yufei.design.pattern.factory.PepperoniPizza;
 import com.study.yufei.design.pattern.factory.Pizza;
 
 /**

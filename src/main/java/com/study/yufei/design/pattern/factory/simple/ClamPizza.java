@@ -1,4 +1,6 @@
-package com.study.yufei.design.pattern.factory;
+package com.study.yufei.design.pattern.factory.simple;
+
+import com.study.yufei.design.pattern.factory.Pizza;
 
 /**
  * 蛤蜊披萨
