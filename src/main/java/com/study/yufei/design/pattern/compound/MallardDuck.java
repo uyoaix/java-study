@@ -1,6 +1,5 @@
 package com.study.yufei.design.pattern.compound;
 
-import java.util.Observer;
 
 /**
  * 绿头鸭
