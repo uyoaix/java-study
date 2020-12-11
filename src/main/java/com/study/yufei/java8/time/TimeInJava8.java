@@ -1,10 +1,12 @@
 package com.study.yufei.java8.time;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.TemporalUnit;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * java8 时间处理
@@ -46,6 +48,10 @@ public class TimeInJava8 {
         System.out.println(zonedDateTime1);
 
         System.out.println(between.toDays());
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH").withZone(ZoneId.of("+00:00"));
+        Instant nextHour = Instant.now().plus(1, ChronoUnit.HOURS);
+        System.out.println("instant格式化：" + dateTimeFormatter.format(nextHour));
 
     }
 }
