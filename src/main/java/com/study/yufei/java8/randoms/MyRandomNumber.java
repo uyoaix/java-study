@@ -3,6 +3,7 @@ package com.study.yufei.java8.randoms;
 import org.apache.commons.lang3.RandomUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -84,18 +85,17 @@ public class MyRandomNumber {
             IncrementRange range = new IncrementRange();
             range.setMin(incrementRange.getMin());
             range.setMax(incrementRange.getMax());
-            range.setPercentScopeMin(scopeMax[0] + 1);
-            range.setPercentScopeMax(range.getPercentScopeMin() + (incrementRange.getChance() - 1));
+            range.setPercentScopeMin(scopeMax[0]);
+            range.setPercentScopeMax(range.getPercentScopeMin() + (incrementRange.getChance()/100));
             scopeMax[0] = range.getPercentScopeMax();
             return range;
         }).collect(Collectors.toList());
+        Collections.shuffle(ranges);
 
-        double min = ranges.get(0).getPercentScopeMin();
-        double max = ranges.get(ranges.size() - 1).getPercentScopeMax() + 1;
-        double randomDouble = RandomUtils.nextDouble(min, max);
-        int randomNum = ranges.get(0).getMin();
+        double randomDouble = Math.random();
+        int randomNum = 0;
         for (IncrementRange range : ranges) {
-            if (range.getPercentScopeMin() <= randomDouble && randomDouble <= range.getPercentScopeMax()) {
+            if (range.getPercentScopeMin() < randomDouble && randomDouble <= range.getPercentScopeMax()) {
                 randomNum = RandomUtils.nextInt(range.getMin(), range.getMax());
                 break;
             }
