@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public interface DistributedLock {
 
 
-    Boolean tryLock(String key, String value, long timeout, TimeUnit unit);
+    Boolean tryLock(String key, long timeout, TimeUnit unit);
 
     void releaseLock(String key);
 
