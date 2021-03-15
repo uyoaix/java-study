@@ -53,5 +53,34 @@ public class TimeInJava8 {
         Instant nextHour = Instant.now().plus(1, ChronoUnit.HOURS);
         System.out.println("instant格式化：" + dateTimeFormatter.format(nextHour));
 
+        DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.of("+00:00"));
+        Instant instantNow = Instant.now();
+        System.out.println("instant格式化2：" + dateTimeFormatter2.format(instantNow));
+
+
+        LocalDateTime localDateTime2 = LocalDateTime.ofInstant(Instant.now(), ZoneId.of("+00:00")).withMinute(0).withSecond(0);
+        Instant hourInstant = localDateTime2.toInstant(ZoneOffset.of("+00:00"));
+        Date hourDate = Date.from(hourInstant);
+        System.out.println();
+
+        Instant plus90 = Instant.now().plus(1, ChronoUnit.DAYS).atOffset(ZoneOffset.of("+00:00")).toInstant();
+        System.out.println(plus90);
+
+
+        LocalDateTime now1 = LocalDateTime.now();
+        LocalDateTime localDateTime3 = now1.minusDays(now1.getDayOfWeek().getValue());
+
+        LocalDateTime localDateTime4 = LocalDateTime.ofInstant(Instant.now(), ZoneOffset.of("+00:00"));
+        LocalDateTime with = localDateTime4.with(DayOfWeek.MONDAY);
+        LocalDateTime with2 = localDateTime4.withHour(0).withMinute(0).withSecond(0).withNano(0).with(DayOfWeek.MONDAY);
+
+
+
+        String dateTimeStr = "2021-03-09" +" "+ "00:00:00";
+        LocalDateTime localDateTime5 = LocalDateTime.parse(dateTimeStr, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        Instant instant = localDateTime5.toInstant(ZoneOffset.of("+00:00"));
+        Date from = Date.from(instant);
+        System.out.println();
+
     }
 }
