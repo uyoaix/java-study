@@ -15,6 +15,9 @@ import java.util.concurrent.TimeUnit;
  * 也就是说，无论调用加锁操作多少次，最终只会成功加锁一次。
  * 而执行完服务A中的逻辑后，在服务A中调用RedisLock接口的解锁方法，
  * 此时，会将当前线程所有的加锁操作获得的锁全部释放掉。
+ * 4. 阻塞与非阻塞：在提交订单的方法中，当获取Redis分布式锁失败时，我们直接返回了failure来表示当前请求下单的操作失败了。
+ * 试想，在高并发环境下，一旦某个请求获得了分布式锁，那么，在这个请求释放锁之前，其他的请求调用下单方法时，都会返回下单失败的信息。
+ * 在真实场景中，这是非常不友好的。我们可以将后续的请求进行阻塞，直到当前请求释放锁后，再唤醒阻塞的请求获得分布式锁来执行方法。
  *
  * @author yufei.wang
  * @date 2021/03/15 17:13
@@ -40,6 +43,13 @@ public class DistributedLockImpl implements DistributedLock {
             String uuid = UUID.randomUUID().toString();
             threadLocal.set(uuid);
             isLocked = stringRedisTemplate.opsForValue().setIfAbsent(key, uuid, timeout, unit);
+            if(!isLocked){
+                // 获取锁失败，增加自旋，进行阻塞，知道获取锁成功
+                // 缺点：锁自旋会耗用cpu资源，且即时响应接口等待时间过长也不合适
+                do {
+                    isLocked = stringRedisTemplate.opsForValue().setIfAbsent(key, uuid, timeout, unit);
+                } while (!isLocked);
+            }
         } else {
             isLocked = true;
         }
