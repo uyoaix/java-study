@@ -7,6 +7,17 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 支持互斥性
+ * 支持锁超时
+ * 支持阻塞和非阻塞
+ * 支持可重入性
+ * 支持高可用
+ *
+ * CAP理论：CP 或 AP
+ * 1）C：Consistency 一致性
+ * 2）A: Availability 可用性
+ * 3）P: Partition tolerance 分区容错性
+ *
  * 1. 如果其他地方没有调用tryLock方法，而是直接调用了releaseLock方法，传的key是一样的，那就会出现问题：把别人的锁释放掉了
  * 2. 锁重入：还有一种场景就是在提交订单的接口方法中，调用了服务A，服务A调用了服务B，而服务B的方法中存在对同一个商品的加锁和解锁操作。
  * 所以，服务B成功设置锁标志位后，提交订单的接口方法继续执行时，也不能成功设置锁标志位了。

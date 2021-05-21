@@ -1,8 +1,6 @@
 package com.study.yufei.java8;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -14,14 +12,29 @@ public class Test1 {
 
     public static void main(String[] args) {
 
-        List<Model> models = new ArrayList<>();
-        models.add(new Model(1,333));
-        models.add(new Model(2, 4444));
+//        List<Model> models = new ArrayList<>();
+//        models.add(new Model(1,333));
+//        models.add(new Model(2, 4444));
+//
+//        Map<Integer, Model> modelMap = models.stream().collect(Collectors.toMap(Model::getId, Function.identity(), (m1, m2) -> m2));
+//
+//        System.out.println(modelMap.containsKey(1));
+//
+//
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
 
-        Map<Integer, Model> modelMap = models.stream().collect(Collectors.toMap(Model::getId, Function.identity(), (m1, m2) -> m2));
+        StringBuffer sb = new StringBuffer();
+        list.forEach(integer -> sb.append(integer).append(","));
 
-        System.out.println(modelMap.containsKey(1));
+        System.out.println(sb);
 
+        String string = sb.toString();
+        String[] split = string.split(",");
+
+        System.out.println();
     }
 
     public static class Model {

@@ -1,5 +1,6 @@
 package com.study.yufei.java8.time;
 
+import javax.xml.crypto.Data;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -10,6 +11,7 @@ import java.util.Locale;
 
 /**
  * java8 时间处理
+ *
  * @author yufei.wang
  * @date 2020/11/20 22:17
  */
@@ -75,12 +77,33 @@ public class TimeInJava8 {
         LocalDateTime with2 = localDateTime4.withHour(0).withMinute(0).withSecond(0).withNano(0).with(DayOfWeek.MONDAY);
 
 
-
-        String dateTimeStr = "2021-03-09" +" "+ "00:00:00";
+        String dateTimeStr = "2021-03-09" + " " + "00:00:00";
         LocalDateTime localDateTime5 = LocalDateTime.parse(dateTimeStr, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         Instant instant = localDateTime5.toInstant(ZoneOffset.of("+00:00"));
         Date from = Date.from(instant);
         System.out.println();
 
+        LocalDate today = LocalDate.now();
+        LocalDate firstDayOfMonth = today.with(TemporalAdjusters.firstDayOfMonth());
+        LocalDate nextMonthOfFirstDay = firstDayOfMonth.plus(1, ChronoUnit.MONTHS);
+        System.out.println();
+
+        Instant parse = Instant.parse("2021-04-16T09:00:00.00Z");
+        long time = Date.from(parse).getTime();
+        long currentTimeMillis = System.currentTimeMillis();
+        long epochSecond = parse.getEpochSecond();
+        System.out.println();
+
+        OffsetDateTime now2 = OffsetDateTime.now(ZoneOffset.UTC);
+        LocalDate localDate = now2.toLocalDate();
+        int year = OffsetDateTime.now(ZoneOffset.UTC).getYear();
+        System.out.println(localDate.toString());
+
+        OffsetDateTime utc = OffsetDateTime.now(ZoneOffset.UTC);
+        System.out.println(utc);
+        String curDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(utc);
+        System.out.println(curDate);
+
     }
 }
+
