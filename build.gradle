@@ -6,12 +6,15 @@ plugins {
 
 }
 
+
 group 'com.study.yufei'
 version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
+
+
 
 dependencies {
 
@@ -28,10 +31,9 @@ dependencies {
     compile group: 'commons-codec', name: 'commons-codec', version: '1.14'
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.2'
 
-
-
     compileOnly 'org.projectlombok:lombok:1.16.2'
     implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.25'
 
+    implementation ('org.web3j:core:4.8.6')
 
 }
