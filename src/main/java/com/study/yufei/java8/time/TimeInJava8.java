@@ -104,6 +104,19 @@ public class TimeInJava8 {
         String curDate = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(utc);
         System.out.println(curDate);
 
+        long timeTemp = 1622447850;
+        Instant instant1 = Instant.ofEpochSecond(timeTemp);
+
+        Date date1 = new Date();
+        OffsetDateTime offsetDateTime1 = Instant.ofEpochMilli(date1.getTime() + 1000).atOffset(ZoneOffset.of("+00:00"));
+        System.out.println(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(offsetDateTime));
+
+        LocalDateTime switchDateTime = LocalDateTime.of(2021, 8, 9,
+                0, 0, 0)
+                .atOffset(ZoneOffset.of("+00:00")).toLocalDateTime();
+        System.out.println(switchDateTime);
+
+
     }
 }
 

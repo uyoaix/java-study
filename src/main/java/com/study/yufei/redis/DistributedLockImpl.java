@@ -48,7 +48,7 @@ public class DistributedLockImpl implements DistributedLock {
 
     @Override
     public Boolean tryLock(String key, long timeout, TimeUnit unit) {
-        Boolean isLocked;
+        boolean isLocked = false;
         // 当前线程已获取锁，再次调用直接返回true，锁可重入
         if (threadLocal.get() == null) {
             String uuid = UUID.randomUUID().toString();
