@@ -33,8 +33,11 @@ public class BigDecimalUtils {
             String[] amountStrArr = amountStr.split("\\.");
             // 获取小数位数
             int decimalLen = amountStrArr[1].length();
+            if(decimalLen > 1){
+                decimalLen = decimalLen - 1;
+            }
             // 使用HALF_UP向上进位，精度长度位小数位减1
-            finalAmount = amount.stripTrailingZeros().setScale(decimalLen - 1, RoundingMode.HALF_UP);
+            finalAmount = amount.stripTrailingZeros().setScale(decimalLen, RoundingMode.HALF_UP);
         } else {
             // 整数
             int amountInt = amount.intValue();
@@ -63,6 +66,8 @@ public class BigDecimalUtils {
         BigDecimal amount5 = new BigDecimal("165.231");
         BigDecimal amount6 = new BigDecimal("165.231000000000");
         BigDecimal amount7 = new BigDecimal("12.005");
+        BigDecimal amount8 = new BigDecimal("0.1");
+
 
         System.out.println("12321 四舍五入后：" + round(amount1));
         System.out.println("15 四舍五入后：" + round(amount2));
@@ -72,6 +77,7 @@ public class BigDecimalUtils {
         System.out.println("165.231 四舍五入后：" + round(amount5));
         System.out.println("165.231000000000 四舍五入后：" + round(amount6));
         System.out.println("12.005 四舍五入后：" + round(amount7));
+        System.out.println("0.1 四舍五入后：" + round(amount8));
 
     }
 
