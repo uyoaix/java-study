@@ -1,13 +1,13 @@
 package com.study.yufei.java8.time;
 
-import javax.xml.crypto.Data;
+import org.apache.commons.lang3.StringUtils;
+
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
-import java.time.temporal.TemporalUnit;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * java8 时间处理
@@ -115,6 +115,27 @@ public class TimeInJava8 {
                 0, 0, 0)
                 .atOffset(ZoneOffset.of("+00:00")).toLocalDateTime();
         System.out.println(switchDateTime);
+
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        String normalizeMonth = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.MONTH)+1), 2 ,'0');
+        String normalizeDay = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)), 2 ,'0');
+        String dateStr = calendar.get(Calendar.YEAR) +"-" + normalizeMonth +"-"+ normalizeDay;
+        Instant startInstant = Instant.parse(dateStr+"T00:00:00.00Z");
+        Instant endInstant = Instant.parse("2038-01-01T00:00:00.00Z");
+
+        System.out.println(Date.from(startInstant) +"");
+        System.out.println(Date.from(endInstant) +"");
+
+
+        LocalDateTime firstday = LocalDateTime.now().with(TemporalAdjusters.firstDayOfMonth()).withHour(0).withMinute(0).withSecond(0);
+        Date from1 = Date.from(firstday.atOffset(ZoneOffset.of("+00:00")).toInstant());
+
+        LocalDateTime firstDayOfNextWeek = LocalDateTime.now().with(DayOfWeek.MONDAY).withHour(0).withMinute(0).withSecond(0).withNano(0);
+        Date from2 = Date.from(firstDayOfNextWeek.atOffset(ZoneOffset.of("+00:00")).toInstant());
+
+        System.out.printf(from1+"");
 
 
     }
