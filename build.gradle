@@ -36,4 +36,6 @@ dependencies {
 
     implementation ('org.web3j:core:4.8.6')
 
+    implementation('cglib:cglib:3.3.0')
+
 }
