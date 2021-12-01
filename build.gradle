@@ -18,24 +18,21 @@ repositories {
 
 dependencies {
 
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
-    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.70'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
 
     // spring-boot
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.70'
+
     compile group: 'commons-codec', name: 'commons-codec', version: '1.14'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     implementation group: 'org.apache.commons', name: 'commons-math3', version: '3.2'
 
-    compileOnly 'org.projectlombok:lombok:1.16.2'
-    implementation group: 'org.slf4j', name: 'jcl-over-slf4j', version: '1.7.25'
-
     implementation ('org.web3j:core:4.8.6')
-
     implementation('cglib:cglib:3.3.0')
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 
 }
