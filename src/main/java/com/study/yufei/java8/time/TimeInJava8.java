@@ -112,21 +112,21 @@ public class TimeInJava8 {
         System.out.println(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(offsetDateTime));
 
         LocalDateTime switchDateTime = LocalDateTime.of(2021, 8, 9,
-                0, 0, 0)
+                        0, 0, 0)
                 .atOffset(ZoneOffset.of("+00:00")).toLocalDateTime();
         System.out.println(switchDateTime);
 
 
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        String normalizeMonth = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.MONTH)+1), 2 ,'0');
-        String normalizeDay = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)), 2 ,'0');
-        String dateStr = calendar.get(Calendar.YEAR) +"-" + normalizeMonth +"-"+ normalizeDay;
-        Instant startInstant = Instant.parse(dateStr+"T00:00:00.00Z");
+        String normalizeMonth = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.MONTH) + 1), 2, '0');
+        String normalizeDay = StringUtils.leftPad(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)), 2, '0');
+        String dateStr = calendar.get(Calendar.YEAR) + "-" + normalizeMonth + "-" + normalizeDay;
+        Instant startInstant = Instant.parse(dateStr + "T00:00:00.00Z");
         Instant endInstant = Instant.parse("2038-01-01T00:00:00.00Z");
 
-        System.out.println(Date.from(startInstant) +"");
-        System.out.println(Date.from(endInstant) +"");
+        System.out.println(Date.from(startInstant) + "");
+        System.out.println(Date.from(endInstant) + "");
 
 
         LocalDateTime firstday = LocalDateTime.now().with(TemporalAdjusters.firstDayOfMonth()).withHour(0).withMinute(0).withSecond(0);
@@ -135,7 +135,15 @@ public class TimeInJava8 {
         LocalDateTime firstDayOfNextWeek = LocalDateTime.now().with(DayOfWeek.MONDAY).withHour(0).withMinute(0).withSecond(0).withNano(0);
         Date from2 = Date.from(firstDayOfNextWeek.atOffset(ZoneOffset.of("+00:00")).toInstant());
 
-        System.out.printf(from1+"");
+        System.out.printf(from1 + "");
+
+        Instant dayTimeInstant = new Date(1639526400000L).toInstant();
+        Instant nowDateInstant = LocalDateTime.now()
+                .withHour(0).withMinute(0).withSecond(0).withNano(0)
+                .atOffset(ZoneOffset.of("+00:00"))
+                .toInstant();
+        System.out.println("dayTimeInstant.compareTo(nowDateInstant): " + dayTimeInstant.compareTo(nowDateInstant));
+        System.out.println("dayTimeInstant.compareTo(nowDateInstant): " + (dayTimeInstant.toEpochMilli() == nowDateInstant.toEpochMilli()));
 
 
     }
